@@ -8,6 +8,7 @@ COPY --from=dockle-base /usr/local/bin/dockle /usr/local/bin/dockle
 COPY src /app/htdocs
 COPY conf/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY conf/php.ini /etc/php7/php.ini
+COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
 
 RUN apk add --no-cache \
       curl \
