@@ -21,3 +21,5 @@ RUN apk add --no-cache \
 CMD [ "runsvdir", "-P", "/etc/service" ]
 
 HEALTHCHECK --interval=30m --timeout=3s --start-period=1m CMD curl -f http://localhost/ || exit 1
+
+USER root
