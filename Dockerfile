@@ -18,6 +18,6 @@ RUN apk add --no-cache \
     && mkdir -m 0777 -p /app/data \
     && rm -rf /var/cache/apk/*
 
-ENTRYPOINT [ "runsvdir", "-P", "/etc/service" ]
+CMD [ "runsvdir", "-P", "/etc/service" ]
 
 HEALTHCHECK --interval=30m --timeout=3s --start-period=1m CMD curl -f http://localhost/ || exit 1
