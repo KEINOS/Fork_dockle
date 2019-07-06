@@ -2,5 +2,6 @@
     "name": "dockle-online",
     "description": "This app provides JSON data for Shields.IO endpoint badge.",
     "repository": "https://github.com/KEINOS/dockle-online/tree/dockle-on-heroku",
-    "keywords": ["docker", "security"]
+    "keywords": ["docker", "security"],
+    "stack": "container"
 }
