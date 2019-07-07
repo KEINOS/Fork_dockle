@@ -9,6 +9,7 @@ COPY src /app/htdocs
 COPY conf/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY conf/php.ini /etc/php7/php.ini
 COPY conf/www.conf /etc/php7/php-fpm.d/www.conf
+COPY conf/run-server.sh /run-server.sh
 
 RUN apk add --no-cache \
       curl \
@@ -17,10 +18,13 @@ RUN apk add --no-cache \
       php7-curl \
     && mkdir -m 0777 -p /.cache \
     && mkdir -m 0777 -p /app/data \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && adduser -S www-data \
+    && addgroup -S www-data www-data
 
-CMD [ "runsvdir", "-P", "/etc/service" ]
+ENTRYPOINT [ "/run-server.sh" ]
+CMD [ "hoge" ]
 
 HEALTHCHECK --interval=30m --timeout=3s --start-period=1m CMD curl -f http://localhost/ || exit 1
 
-USER root
+USER www-data
